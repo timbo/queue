@@ -62,7 +62,13 @@ Queue.ApplicationAdapter = DS.FixtureAdapter.extend();
 
 Queue.Guest = DS.Model.extend({
   name: DS.attr('string'),
-  vip: DS.attr('boolean')
+  vip: DS.attr('boolean'),
+  post: DS.belongsTo('event')
+});
+
+Queue.Event = DS.Model.extend({
+  name: DS.attr('string'),
+  comments: DS.hasMany('guest')
 });
 
 // Fixtures
