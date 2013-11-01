@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Ember Starter Kit</title>
+<title>Queue - Guest list manager</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -28,14 +28,20 @@
     </ul>
   </script>
 
-    <script type="text/x-handlebars" data-template-name="events/index">
-    {{input type="text" id="new-event-name" placeholder="New event" value=newName action="createEvent"}}
-    <ul {{bind-attr class="vip:vip"}}>
-    {{#each itemController="event"}}
+    <script type="text/x-handlebars" data-template-name="occasion">
+    <h1>{{ name }}</h1>
+    {{ outlet }}
+  </script>
+
+    <script type="text/x-handlebars" data-template-name="occasions">
+    <h1>Events</h1>
+    {{input type="text" id="new-occasion-name" placeholder="New Occasion" value=newName action="createOccasion"}}
+    <ul>
+    {{#each itemController="occasion"}}
       <li>
-        {{input type="checkbox" checked=vip class="toggle"}}
         <label>{{ name }}</label>
-        <button {{action "removeEvent"}} class="destroy">Remove</button>
+        <button {{action "removeOccasion"}} class="destroy">Remove</button>
+        {{#link-to "occasion" }}View Guests{{/link-to}}
       </li>
     {{/each}}
     </ul>
