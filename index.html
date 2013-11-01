@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Queue - Guest list manager</title>
-  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,15 +17,15 @@
   <script type="text/x-handlebars" data-template-name="guests/index">
     {{input type="text" id="new-todo-name" placeholder="New guest" value=newName action="createGuest"}}
     {{input type="checkbox" id="new-guest-vip" value=newVip action="createGuest"}}
-    <ul {{bind-attr class="vip:vip"}}>
+    <table  class="table table-striped" {{bind-attr class="vip:vip"}}>
     {{#each itemController="guest"}}
-      <li>
+      <tr>
         {{input type="checkbox" checked=vip class="toggle"}}
         <label>{{ name }}</label>
-        <button {{action "removeGuest"}} class="destroy">Remove</button>
-      </li>
+        <button {{action "removeGuest"}} class="destroy btn btn-primary">Remove</button>
+      </tr>
     {{/each}}
-    </ul>
+    </table>
   </script>
 
     <script type="text/x-handlebars" data-template-name="occasion">
@@ -36,15 +36,15 @@
     <script type="text/x-handlebars" data-template-name="occasions">
     <h1>Events</h1>
     {{input type="text" id="new-occasion-name" placeholder="New Occasion" value=newName action="createOccasion"}}
-    <ul>
+    <table class="table table-striped" >
     {{#each itemController="occasion"}}
-      <li>
-        <label>{{ name }}</label>
-        <button {{action "removeOccasion"}} class="destroy">Remove</button>
-        {{#link-to "occasion" }}View Guests{{/link-to}}
-      </li>
+      <tr>
+        <td>{{ name }}</td>
+        <td><button {{action "removeOccasion"}} class="destroy btn btn-primary">Remove</button>
+        {{#link-to "occasion" }}View Guests{{/link-to}}</td>
+      </tr>
     {{/each}}
-    </ul>
+    </table>
   </script>
 
   <script src="js/libs/jquery-1.9.1.js"></script>
